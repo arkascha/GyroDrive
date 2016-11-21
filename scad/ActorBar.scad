@@ -3,8 +3,8 @@ use <ElectroMagnet.scad>
 module ActorBar() {
   // the bar body
   difference() {
-    color("white") {
-      cube([10,80,6],center=true);
+    color("darkgreen") {
+      cube([10,120,6],center=true);
       for(y=[-30:30:30])
         translate([0,y,0]) cylinder(h=6,d=26,center=true);
     }
