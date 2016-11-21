@@ -67,7 +67,7 @@ module BallBearingFlange() {
 
   translate([0,0,2]) {
     Flange();
-    translate([0,0,2]) BallBearing();
+    rotate([0,0,sin($t*360)*30]) translate([0,0,2]) BallBearing();
   }
 }
 
