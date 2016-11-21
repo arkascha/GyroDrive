@@ -32,18 +32,18 @@ module Effector(north) {
   // hard drive enclosure
   HardDriveEnclosure();
   // two hard drive fixations
-  rotate([180,0,0]) translate([0,-62,0]) HarddriveFixation();
-  mirror([1,0,0]) rotate([0,180,0]) translate([0,-62,0]) HarddriveFixation();
+  rotate([0,0,0]) translate([-27,-50,-10]) HarddriveFixation();
+  mirror([1,0,0]) rotate([180,180,0]) translate([-27,-50,-10]) HarddriveFixation();
   // the neobdyn magnets
   for(y = [-30:30:30]) {
     rotate([180,0,0]) translate([-60,y,12]) PermanentMagnet(14,5,3.5,6.7,north,true);
   }
   // the four moving stanchions
-  translate([+59,73,0]) rotate([180-90,-sin($t*360)*5+56+90,0]) EffectorStanchion(2,143,1,2);
-  translate([-59,76,0]) rotate([180-90,-sin($t*360)*5-56+90,0]) EffectorStanchion(2,143,4,2);
+  translate([+12,  71.5,-2.5]) rotate([180-90,-sin($t*360)*5+46+90,0]) EffectorStanchion(2,110,1,1);
+  translate([-66.5,74.5,-2.5]) rotate([180-90,-sin($t*360)*5-46+90,0]) EffectorStanchion(2,110,4,1);
   // the four fixed stanchions
-  translate([+60,69,-20]) rotate([-90,161.5,0]) EffectorStanchion(1,64,5,2);
-  translate([-60,72,-20]) rotate([-90,18.5,0]) EffectorStanchion(1,64,2,2);
+//  translate([+60,69,-20]) rotate([-90,161.5,0]) EffectorStanchion(1,64,5,2);
+//  translate([-60,72,-20]) rotate([-90,18.5,0]) EffectorStanchion(1,64,2,2);
 }
 
 module EffectorBox() {

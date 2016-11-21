@@ -1,11 +1,11 @@
 module EffectorStanchion(numberOfAxis,lengthOfBeam,distanceOfFixpoint=1,widthOfFixpoint=2) {
 
   module axisDisk() {
-    color("dimgray") cylinder(h=0.5,r=4,center=false);
+    color("dimgray") cylinder(h=0.5,d=5,center=false);
   }
   
   module axisBody(x) {
-    translate([x,0,-1.75]) color("darkred") cylinder(h=3.5+distanceOfFixpoint+widthOfFixpoint,r=3,center=false);
+    translate([x,0,-1.75]) color("darkred") cylinder(h=3.5+distanceOfFixpoint+widthOfFixpoint,d=3,center=false);
     // beam axis end disks
     for(z=[-1.5,1,.5+distanceOfFixpoint])
       translate([x,0,z]) axisDisk();
