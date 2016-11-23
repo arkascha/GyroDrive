@@ -1,31 +1,21 @@
+use <RivetAxis.scad>
+
 module EffectorStanchion(numberOfAxis,lengthOfBeam,distanceOfFixpoint=1,widthOfFixpoint=2) {
 
-  module axisDisk() {
-    color("dimgray") cylinder(h=0.5,r=4,center=false);
-  }
-  
-  module axisBody(x) {
-    translate([x,0,-1.75]) color("darkred") cylinder(h=3.5+distanceOfFixpoint+widthOfFixpoint,r=3,center=false);
-    // beam axis end disks
-    for(z=[-1.5,1,.5+distanceOfFixpoint])
-      translate([x,0,z]) axisDisk();
-    translate([x,0,1+distanceOfFixpoint+widthOfFixpoint]) axisDisk();
-  }
-
   translate([lengthOfBeam/2,0,-(2+widthOfFixpoint/2)]) {
-    // main beam
+    // main beam body
     color("lightgray") cube([lengthOfBeam,10,2],center=true);
-    // beam endings
+    // round beam endings
     for(x=[-lengthOfBeam/2,lengthOfBeam/2])
-    translate([x,0,0]) color("lightgray") cylinder(h=2,r=5,center=true);
+      translate([x,0,0]) color("lightgray") cylinder(h=2,r=5,center=true);
     // beam axes
     if(numberOfAxis==2) {
       for(x=[-lengthOfBeam/2,lengthOfBeam/2]) {
-        axisBody(x);
+        translate([x,0,0]) RivetAxis(6,distanceOfFixpoint,widthOfFixpoint);
       }
     } else if (numberOfAxis==1) {
       x=-lengthOfBeam/2;
-      axisBody(x);
+      translate([x,0,0]) RivetAxis(6,distanceOfFixpoint,widthOfFixpoint);
     }
   }
 }
